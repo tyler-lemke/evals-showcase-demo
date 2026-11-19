@@ -37,6 +37,54 @@ uv sync                # Python environment with DeepEval
 cp .env.example .env   # then paste your OpenRouter key into .env
 ```
 
+### Run each eval
+
+Run these from the repo root. Each eval can be graded by promptfoo, DeepEval or both.
+
+- The promptfoo commands name the folder's config (`-c`), its API key file (`--env-file`) and
+  where to save results (`-o`). Without `-o`, results land in a `results/` folder at the root.
+- `uv run --directory <folder>` runs a Python step inside that folder, using its environment and
+  `.env`.
+
+**[sst2-sentiment/](sst2-sentiment/)**: the models answer during the run, so there's no prep step.
+
+```bash
+# first 100 of 872 sentences
+npx promptfoo eval -c sst2-sentiment/promptfooconfig.yaml --env-file sst2-sentiment/.env \
+  -o sst2-sentiment/results/promptfoo.json --filter-first-n 100
+uv run --directory sst2-sentiment deepeval test run test_deepeval.py
+```
+
+**[audio-accuracy/](audio-accuracy/)**: transcribe first, then grade the saved transcripts.
+
+```bash
+# about 20 seconds, about 5 cents
+uv run --directory audio-accuracy python transcribe.py
+# about 4 cents for the judge
+npx promptfoo eval -c audio-accuracy/promptfooconfig.yaml --env-file audio-accuracy/.env \
+  -o audio-accuracy/results/promptfoo.json
+# about 4 cents for the judge
+uv run --directory audio-accuracy deepeval test run test_deepeval.py
+```
+
+**[image-generation/](image-generation/)**: generate the images first, then grade them.
+
+```bash
+# about 20 seconds, about 45 cents from scratch
+uv run --directory image-generation python generate.py
+npx promptfoo eval -c image-generation/promptfooconfig.yaml --env-file image-generation/.env \
+  -o image-generation/results/promptfoo.json
+uv run --directory image-generation deepeval test run test_deepeval.py
+```
+
+**Some tests will fail**, and that's expected: each failure is a mistake the eval caught. The
+commands exit with an error code when that happens.
+
+To see the results, run `npx promptfoo view` and open <http://localhost:15500>. promptfoo keeps
+every run in one shared history, so this single viewer shows the runs from all three folders.
+Click the eval's name at the top left to switch between runs. If a run is missing from that list,
+run `npx promptfoo import <folder>/results/promptfoo.json` to add that folder's latest run back.
+
 ## Accuracy, latency and cost
 
 Choosing a model means trading off three things. Every eval records all three for every model, so
