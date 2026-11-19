@@ -20,7 +20,7 @@ from openai import OpenAI
 
 HERE = Path(__file__).parent
 MODEL = "anthropic/claude-haiku-5.5"  # any model id from https://openrouter.ai/models
-NUM_EXAMPLES = 100  # first N rows, same as promptfoo's --filter-first-n 100. None = all 872.
+NUM_EXAMPLES = 20  # first N rows, same as promptfoo's --filter-first-n 20. None = all 872.
 PROMPT = (HERE / "prompt.txt").read_text(encoding="utf-8")
 
 load_dotenv(HERE / ".env")

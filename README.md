@@ -49,9 +49,9 @@ Run these from the repo root. Each eval can be graded by promptfoo, DeepEval or 
 **[sst2-sentiment/](sst2-sentiment/)**: the models answer during the run, so there's no prep step.
 
 ```bash
-# first 100 of 872 sentences
+# first 20 of 872 sentences, 2 calls at a time to stay under rate limits
 npx promptfoo eval -c sst2-sentiment/promptfooconfig.yaml --env-file sst2-sentiment/.env \
-  -o sst2-sentiment/results/promptfoo.json --filter-first-n 100
+  -o sst2-sentiment/results/promptfoo.json --filter-first-n 20 -j 2
 uv run --directory sst2-sentiment deepeval test run test_deepeval.py
 ```
 

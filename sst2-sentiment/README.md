@@ -49,12 +49,13 @@ cp .env.example .env   # then paste your OpenRouter key into .env
 
 | | Command | What you get |
 |-|---------|--------------|
-| promptfoo | `npx promptfoo eval --filter-first-n 100` | Six models side by side, one row per sentence |
+| promptfoo | `npx promptfoo eval --filter-first-n 20 -j 2` | Six models side by side, one row per sentence |
 | | `npx promptfoo view` | The same results in your browser |
 | DeepEval | `uv run deepeval test run test_deepeval.py` | One pytest test per sentence, then the pass rate |
 
-Both run on the first 100 sentences so a run is quick and cheap. To use all 872, drop
-`--filter-first-n 100` and set `NUM_EXAMPLES = None` in `test_deepeval.py`.
+Both run on the first 20 sentences so a run is quick, cheap and stays under rate limits, and
+`-j 2` sends only two calls at a time. To use all 872, drop `--filter-first-n 20` and set
+`NUM_EXAMPLES = None` in `test_deepeval.py`.
 
 **Some tests will fail.** Each failure is a sentence the model got wrong, which is the thing being
 measured. Both commands exit with an error code when any test fails, and that's expected here.
