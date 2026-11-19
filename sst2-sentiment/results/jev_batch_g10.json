@@ -1,0 +1,1129 @@
+{
+  "model_requested": "typesafe/jev-1.14",
+  "model_used": [
+    "typesafe/jev-1.14-20261014"
+  ],
+  "n": 100,
+  "group_size": 10,
+  "requests": 10,
+  "workers": 8,
+  "correct": 97,
+  "missing": 0,
+  "accuracy": 0.97,
+  "wall_clock_s": 0.9528988748788834,
+  "latency_mean_s": 0.40777615425176916,
+  "latency_p50_s": 0.35794174997135997,
+  "latency_p95_s": 0.6054329578764737,
+  "input_tokens": 9703,
+  "cost_usd": 0.000407526,
+  "overhead": {
+    "overhead_tokens": 265,
+    "overhead_cost_usd": 1.1129999999999998e-05,
+    "question_tokens": 46,
+    "question_cost_usd": 1.932000000000001e-06
+  },
+  "overhead_total_usd": 0.00011129999999999998,
+  "cost_without_overhead_usd": 0.000296226,
+  "results": [
+    {
+      "idx": "0",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "1",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.94,
+      "probabilities": {
+        "positive": 0.03,
+        "negative": 0.97
+      }
+    },
+    {
+      "idx": "2",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "3",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "4",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "5",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "6",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "7",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "8",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "9",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "10",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "11",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.01,
+        "negative": 0.99
+      }
+    },
+    {
+      "idx": "12",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "13",
+      "label": "positive",
+      "predicted": "negative",
+      "correct": false,
+      "confidence": 0.48,
+      "probabilities": {
+        "positive": 0.26,
+        "negative": 0.74
+      }
+    },
+    {
+      "idx": "14",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "15",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "16",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.9,
+      "probabilities": {
+        "positive": 0.95,
+        "negative": 0.05
+      }
+    },
+    {
+      "idx": "17",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "18",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "19",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "20",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.86,
+      "probabilities": {
+        "positive": 0.07,
+        "negative": 0.93
+      }
+    },
+    {
+      "idx": "21",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.82,
+      "probabilities": {
+        "positive": 0.09,
+        "negative": 0.91
+      }
+    },
+    {
+      "idx": "22",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.68,
+      "probabilities": {
+        "positive": 0.16,
+        "negative": 0.84
+      }
+    },
+    {
+      "idx": "23",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "24",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "25",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "26",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "27",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "28",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "29",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "30",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "31",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "32",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "33",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.84,
+      "probabilities": {
+        "positive": 0.08,
+        "negative": 0.92
+      }
+    },
+    {
+      "idx": "34",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "35",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.01,
+        "negative": 0.99
+      }
+    },
+    {
+      "idx": "36",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "37",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.84,
+      "probabilities": {
+        "positive": 0.08,
+        "negative": 0.92
+      }
+    },
+    {
+      "idx": "38",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.82,
+      "probabilities": {
+        "positive": 0.91,
+        "negative": 0.09
+      }
+    },
+    {
+      "idx": "39",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "40",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "41",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "42",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "43",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "44",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.58,
+      "probabilities": {
+        "positive": 0.21,
+        "negative": 0.79
+      }
+    },
+    {
+      "idx": "45",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.92,
+      "probabilities": {
+        "positive": 0.04,
+        "negative": 0.96
+      }
+    },
+    {
+      "idx": "46",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "47",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "48",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "49",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "50",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "51",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "52",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.48,
+      "probabilities": {
+        "positive": 0.74,
+        "negative": 0.26
+      }
+    },
+    {
+      "idx": "53",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.96,
+      "probabilities": {
+        "positive": 0.98,
+        "negative": 0.02
+      }
+    },
+    {
+      "idx": "54",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "55",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "56",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "57",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.84,
+      "probabilities": {
+        "positive": 0.08,
+        "negative": 0.92
+      }
+    },
+    {
+      "idx": "58",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "59",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "60",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "61",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.01,
+        "negative": 0.99
+      }
+    },
+    {
+      "idx": "62",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.94,
+      "probabilities": {
+        "positive": 0.97,
+        "negative": 0.03
+      }
+    },
+    {
+      "idx": "63",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "64",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.96,
+      "probabilities": {
+        "positive": 0.02,
+        "negative": 0.98
+      }
+    },
+    {
+      "idx": "65",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.01,
+        "negative": 0.99
+      }
+    },
+    {
+      "idx": "66",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.88,
+      "probabilities": {
+        "positive": 0.94,
+        "negative": 0.06
+      }
+    },
+    {
+      "idx": "67",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "68",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "69",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "70",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.96,
+      "probabilities": {
+        "positive": 0.02,
+        "negative": 0.98
+      }
+    },
+    {
+      "idx": "71",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "72",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "73",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.94,
+      "probabilities": {
+        "positive": 0.97,
+        "negative": 0.03
+      }
+    },
+    {
+      "idx": "74",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "75",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "76",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "77",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "78",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.24,
+      "probabilities": {
+        "positive": 0.62,
+        "negative": 0.38
+      }
+    },
+    {
+      "idx": "79",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "80",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.74,
+      "probabilities": {
+        "positive": 0.87,
+        "negative": 0.13
+      }
+    },
+    {
+      "idx": "81",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.96,
+      "probabilities": {
+        "positive": 0.02,
+        "negative": 0.98
+      }
+    },
+    {
+      "idx": "82",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "83",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "84",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.94,
+      "probabilities": {
+        "positive": 0.97,
+        "negative": 0.03
+      }
+    },
+    {
+      "idx": "85",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.9,
+      "probabilities": {
+        "positive": 0.95,
+        "negative": 0.05
+      }
+    },
+    {
+      "idx": "86",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "87",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.99,
+        "negative": 0.01
+      }
+    },
+    {
+      "idx": "88",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.76,
+      "probabilities": {
+        "positive": 0.88,
+        "negative": 0.12
+      }
+    },
+    {
+      "idx": "89",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "90",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.44,
+      "probabilities": {
+        "positive": 0.72,
+        "negative": 0.28
+      }
+    },
+    {
+      "idx": "91",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.6,
+      "probabilities": {
+        "positive": 0.8,
+        "negative": 0.2
+      }
+    },
+    {
+      "idx": "92",
+      "label": "negative",
+      "predicted": "positive",
+      "correct": false,
+      "confidence": 0.24,
+      "probabilities": {
+        "positive": 0.62,
+        "negative": 0.38
+      }
+    },
+    {
+      "idx": "93",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 0.58,
+      "probabilities": {
+        "positive": 0.79,
+        "negative": 0.21
+      }
+    },
+    {
+      "idx": "94",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "95",
+      "label": "negative",
+      "predicted": "positive",
+      "correct": false,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "96",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.98,
+      "probabilities": {
+        "positive": 0.01,
+        "negative": 0.99
+      }
+    },
+    {
+      "idx": "97",
+      "label": "positive",
+      "predicted": "positive",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 1,
+        "negative": 0
+      }
+    },
+    {
+      "idx": "98",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 1,
+      "probabilities": {
+        "positive": 0,
+        "negative": 1
+      }
+    },
+    {
+      "idx": "99",
+      "label": "negative",
+      "predicted": "negative",
+      "correct": true,
+      "confidence": 0.88,
+      "probabilities": {
+        "positive": 0.06,
+        "negative": 0.94
+      }
+    }
+  ]
+}
