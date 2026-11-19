@@ -1,0 +1,11 @@
+# Words a pharmacy can't afford to get wrong. One term per line.
+# "|" separates ways of writing the same term that all count as correct.
+# Every time a term is said in the reference, the transcript must have it too.
+Contoso
+Mary
+cholesterol
+Lipitor
+metformin
+500 milligrams|500 mg|five hundred milligrams
+2012|twenty twelve
+2021|twenty twenty one

@@ -1,0 +1,9 @@
+{
+  "name": "sst2-sentiment",
+  "private": true,
+  "description": "SST-2 sentiment evals with promptfoo and DeepEval, via OpenRouter",
+  "devDependencies": {
+    "node": "^22.23.5",
+    "promptfoo": "^0.125.1"
+  }
+}

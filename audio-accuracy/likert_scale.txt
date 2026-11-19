@@ -1,0 +1,5 @@
+5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.
+4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.
+3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.
+2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.
+1: Unusable. Large parts are missing or made up, or it is not this conversation.

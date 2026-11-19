@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+#
+# Speech-to-text accuracy on the Contoso Pharmacy call, graded with promptfoo.
+# transcribe.py has already sent the audio to every model and saved the transcripts in
+# results/transcripts.csv. promptfoo only grades them: it never sends the audio again,
+# and it scores exactly the same transcripts as test_deepeval.py.
+
+description: Contoso Pharmacy call, speech-to-text accuracy
+
+# Each saved transcript becomes the "output". The echo provider returns its prompt
+# unchanged, so the prompt is just the transcript itself.
+prompts:
+  - '{{transcript}}'
+providers:
+  - echo
+
+# One test per model. The CSV columns (model, transcript, latency_s, cost_usd, error)
+# become the variables {{model}}, {{transcript}} and so on.
+tests: file://results/transcripts.csv
+
+defaultTest:
+  # promptfoo reads these files when it grades. Its results table shows only the paths.
+  vars:
+    reference: file://data/contoso_pharmacy_reference.txt
+    likert_scale: file://likert_scale.txt
+  options:
+    # The judge model for the Likert rating. test_deepeval.py uses the same one.
+    provider: openrouter:anthropic/claude-sonnet-5.5
+  assert:
+    # 1. Word error rate, computed by metrics.py (the same code DeepEval uses). Lower is better.
+    - type: python
+      metric: WER
+      value: file://metrics.py:promptfoo_wer
+    # 2. Did every drug, dose, date and name come through? Also from metrics.py.
+    - type: python
+      metric: Key terms
+      value: file://metrics.py:promptfoo_key_terms
+    # 3. A judge model rates meaning on a 1-5 Likert scale.
+    #    The score maps 1-5 onto 0-1 the same way DeepEval's GEval does: 4 -> 0.75.
+    - type: llm-rubric
+      metric: Likert
+      threshold: 0.75 # pass at 4 or 5
+      value: |
+        The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it
+        with the reference transcript below and rate how faithfully it records what was said,
+        on this 1-5 Likert scale:
+
+        {{likert_scale}}
+
+        Ignore fillers (uh, um), false starts, punctuation, capitalization, speaker line
+        breaks, and how numbers are written (2021 or twenty twenty-one).
+        Set score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.
+        Start the reason with "Rating N/5".
+
+        Reference transcript:
+        {{reference}}
+
+# Grade fresh on every run, so a run never shows an earlier run's judge ratings.
+evaluateOptions:
+  cache: false
+
+# Save each run's grades to a file. The web viewer (npx promptfoo view) keeps every run too.
+outputPath: results/promptfoo.json

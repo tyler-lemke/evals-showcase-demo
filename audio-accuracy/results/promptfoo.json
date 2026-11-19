@@ -1,0 +1,1581 @@
+{
+  "evalId": "eval-zPT-2026-11-19T01:01:07",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-11-19T01:01:07.653Z",
+    "prompts": [
+      {
+        "id": "57b046c6411ac5c4552919da63fa3c568a42fe5adfe743ac012a9c75014a1fff",
+        "raw": "{{transcript}}",
+        "label": "{{transcript}}",
+        "provider": "echo",
+        "metrics": {
+          "score": 3.734155379504217,
+          "testPassCount": 4,
+          "testFailCount": 2,
+          "testErrorCount": 0,
+          "testCacheHitCount": 0,
+          "assertPassCount": 15,
+          "assertFailCount": 3,
+          "totalLatencyMs": 24,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 6,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 12839,
+              "prompt": 11131,
+              "completion": 1708,
+              "cached": 0,
+              "numRequests": 6,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {
+            "Key terms": 5.846153846153847,
+            "WER": 0.106312292358804,
+            "Likert": 5.25
+          },
+          "namedScoresCount": {
+            "Key terms": 6,
+            "WER": 6,
+            "Likert": 6
+          },
+          "namedScoreWeights": {
+            "Key terms": 6,
+            "WER": 6,
+            "Likert": 6
+          },
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 0.5877630121816169,
+          "reason": "All assertions passed",
+          "namedScores": {
+            "Key terms": 1,
+            "WER": 0.013289036544850499,
+            "Likert": 0.75
+          },
+          "namedScoreWeights": {
+            "Key terms": 1,
+            "WER": 1,
+            "Likert": 1
+          },
+          "tokensUsed": {
+            "total": 2363,
+            "prompt": 1848,
+            "completion": 515,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 0.013289036544850499,
+              "reason": "WER 1.3%: 2 wrong, 2 missing, 0 extra (reference has 301 words)",
+              "assertion": {
+                "type": "python",
+                "metric": "WER",
+                "value": "file://metrics.py:promptfoo_wer"
+              }
+            },
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "13 of 13 key-term mentions right",
+              "assertion": {
+                "type": "python",
+                "metric": "Key terms",
+                "value": "file://metrics.py:promptfoo_key_terms"
+              }
+            },
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Likert",
+                "threshold": 0.75,
+                "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+              },
+              "pass": true,
+              "score": 0.75,
+              "reason": "Rating 4/5. The transcript preserves all key facts (Mary, Lipitor generic, 2021, 2012-2021, metformin 500 mg, pickup). Only minor word differences (were/are, your/a, missing 'huh', 'so') and the dose appears to be attributed to Mary as a question rather than part of the pharmacist's offer, but no fact changes and nothing is made up.",
+              "tokensUsed": {
+                "total": 2363,
+                "prompt": 1848,
+                "completion": 515,
+                "cached": 0,
+                "numRequests": 1,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "openrouter": {
+                  "accountCharge": 0.008846,
+                  "reportedUpstreamInferenceCost": 0.008846,
+                  "reportedUpstreamPromptCost": 0.003696,
+                  "reportedUpstreamCompletionCost": 0.00515,
+                  "isByok": false
+                },
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nHi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by a doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup? Metformin 500 milligrams? Yeah. Yeah. Thank you so much. I'm almost out. That'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.\\n</Output>\\n<Rubric>\\nThe output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\\nwith the reference transcript below and rate how faithfully it records what was said,\\non this 1-5 Likert scale:\\n\\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\\n\\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\\nbreaks, and how numbers are written (2021 or twenty twenty-one).\\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\\nStart the reason with \\\"Rating N/5\\\".\\n\\nReference transcript:\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\\nYes, I was taking the generic form of Lipitor.\\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\\nOkay, thank you.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\nYes, I was taking the generic form of Lipitor.\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\nOkay, thank you.\n"
+              }
+            }
+          ]
+        },
+        "id": "31a41d8a-5560-427a-9c95-f413559bb809",
+        "latencyMs": 7,
+        "namedScores": {
+          "Key terms": 1,
+          "WER": 0.013289036544850499,
+          "Likert": 0.75
+        },
+        "prompt": {
+          "raw": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by a doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup? Metformin 500 milligrams? Yeah. Yeah. Thank you so much. I'm almost out. That'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "label": "{{transcript}}",
+          "config": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          }
+        },
+        "promptId": "57b046c6411ac5c4552919da63fa3c568a42fe5adfe743ac012a9c75014a1fff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by a doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup? Metformin 500 milligrams? Yeah. Yeah. Thank you so much. I'm almost out. That'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "raw": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by a doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup? Metformin 500 milligrams? Yeah. Yeah. Thank you so much. I'm almost out. That'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0.5877630121816169,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+            "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+            "model": "openai/whisper-1",
+            "transcript": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by a doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup? Metformin 500 milligrams? Yeah. Yeah. Thank you so much. I'm almost out. That'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+            "latency_s": "7.13",
+            "cost_usd": "0.0121",
+            "error": ""
+          },
+          "assert": [
+            {
+              "type": "python",
+              "metric": "WER",
+              "value": "file://metrics.py:promptfoo_wer"
+            },
+            {
+              "type": "python",
+              "metric": "Key terms",
+              "value": "file://metrics.py:promptfoo_key_terms"
+            },
+            {
+              "type": "llm-rubric",
+              "metric": "Likert",
+              "threshold": 0.75,
+              "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+            }
+          ],
+          "options": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          },
+          "description": "Row #1",
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 2363,
+            "prompt": 1848,
+            "completion": 515,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+          "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+          "model": "openai/whisper-1",
+          "transcript": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by a doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup? Metformin 500 milligrams? Yeah. Yeah. Thank you so much. I'm almost out. That'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "latency_s": "7.13",
+          "cost_usd": "0.0121",
+          "error": ""
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 0.6710963455149502,
+          "reason": "All assertions passed",
+          "namedScores": {
+            "Key terms": 1,
+            "WER": 0.013289036544850499,
+            "Likert": 1
+          },
+          "namedScoreWeights": {
+            "Key terms": 1,
+            "WER": 1,
+            "Likert": 1
+          },
+          "tokensUsed": {
+            "total": 2023,
+            "prompt": 1838,
+            "completion": 185,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 0.013289036544850499,
+              "reason": "WER 1.3%: 2 wrong, 1 missing, 1 extra (reference has 301 words)",
+              "assertion": {
+                "type": "python",
+                "metric": "WER",
+                "value": "file://metrics.py:promptfoo_wer"
+              }
+            },
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "13 of 13 key-term mentions right",
+              "assertion": {
+                "type": "python",
+                "metric": "Key terms",
+                "value": "file://metrics.py:promptfoo_key_terms"
+              }
+            },
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Likert",
+                "threshold": 0.75,
+                "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "Rating 5/5. The output matches the reference in meaning throughout. Every name (Mary, Contoso Pharmacy), drug (generic Lipitor, metformin), dose (500 milligrams), date (2012 through 2021) and fact is correct. The only differences are trivial wording variants ('contacting' vs 'contacted', 'you are on' vs 'you were on', 'be happy' vs 'I'd be happy') and the absence of speaker line breaks, none of which change any fact.",
+              "tokensUsed": {
+                "total": 2023,
+                "prompt": 1838,
+                "completion": 185,
+                "cached": 0,
+                "numRequests": 1,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "openrouter": {
+                  "accountCharge": 0.005526,
+                  "reportedUpstreamInferenceCost": 0.005526,
+                  "reportedUpstreamPromptCost": 0.003676,
+                  "reportedUpstreamCompletionCost": 0.00185,
+                  "isByok": false
+                },
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacting me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. OK, I'm certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor, is that right? Yes, I was taking the generic form of Lipitor. OK, so I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. OK, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please? OK, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. OK, thank you.\\n</Output>\\n<Rubric>\\nThe output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\\nwith the reference transcript below and rate how faithfully it records what was said,\\non this 1-5 Likert scale:\\n\\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\\n\\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\\nbreaks, and how numbers are written (2021 or twenty twenty-one).\\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\\nStart the reason with \\\"Rating N/5\\\".\\n\\nReference transcript:\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\\nYes, I was taking the generic form of Lipitor.\\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\\nOkay, thank you.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\nYes, I was taking the generic form of Lipitor.\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\nOkay, thank you.\n"
+              }
+            }
+          ]
+        },
+        "id": "068ff9d4-fd31-468a-a688-17ecade2fa11",
+        "latencyMs": 4,
+        "namedScores": {
+          "Key terms": 1,
+          "WER": 0.013289036544850499,
+          "Likert": 1
+        },
+        "prompt": {
+          "raw": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacting me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. OK, I'm certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor, is that right? Yes, I was taking the generic form of Lipitor. OK, so I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. OK, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please? OK, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. OK, thank you.",
+          "label": "{{transcript}}",
+          "config": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          }
+        },
+        "promptId": "57b046c6411ac5c4552919da63fa3c568a42fe5adfe743ac012a9c75014a1fff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacting me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. OK, I'm certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor, is that right? Yes, I was taking the generic form of Lipitor. OK, so I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. OK, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please? OK, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. OK, thank you.",
+          "raw": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacting me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. OK, I'm certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor, is that right? Yes, I was taking the generic form of Lipitor. OK, so I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. OK, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please? OK, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. OK, thank you.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0.6710963455149502,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+            "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+            "model": "openai/gpt-4o-mini-transcribe",
+            "transcript": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacting me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. OK, I'm certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor, is that right? Yes, I was taking the generic form of Lipitor. OK, so I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. OK, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please? OK, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. OK, thank you.",
+            "latency_s": "3.7",
+            "cost_usd": "0.00338875",
+            "error": ""
+          },
+          "assert": [
+            {
+              "type": "python",
+              "metric": "WER",
+              "value": "file://metrics.py:promptfoo_wer"
+            },
+            {
+              "type": "python",
+              "metric": "Key terms",
+              "value": "file://metrics.py:promptfoo_key_terms"
+            },
+            {
+              "type": "llm-rubric",
+              "metric": "Likert",
+              "threshold": 0.75,
+              "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+            }
+          ],
+          "options": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          },
+          "description": "Row #2",
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 2023,
+            "prompt": 1838,
+            "completion": 185,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+          "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+          "model": "openai/gpt-4o-mini-transcribe",
+          "transcript": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacting me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. OK, I'm certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor, is that right? Yes, I was taking the generic form of Lipitor. OK, so I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. OK, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please? OK, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. OK, thank you.",
+          "latency_s": "3.7",
+          "cost_usd": "0.00338875",
+          "error": ""
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 0.6821705426356589,
+          "reason": "All assertions passed",
+          "namedScores": {
+            "Key terms": 1,
+            "WER": 0.046511627906976744,
+            "Likert": 1
+          },
+          "namedScoreWeights": {
+            "Key terms": 1,
+            "WER": 1,
+            "Likert": 1
+          },
+          "tokensUsed": {
+            "total": 2049,
+            "prompt": 1864,
+            "completion": 185,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 0.046511627906976744,
+              "reason": "WER 4.7%: 4 wrong, 2 missing, 8 extra (reference has 301 words)",
+              "assertion": {
+                "type": "python",
+                "metric": "WER",
+                "value": "file://metrics.py:promptfoo_wer"
+              }
+            },
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "13 of 13 key-term mentions right",
+              "assertion": {
+                "type": "python",
+                "metric": "Key terms",
+                "value": "file://metrics.py:promptfoo_key_terms"
+              }
+            },
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Likert",
+                "threshold": 0.75,
+                "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "Rating 5/5. The output matches the reference in meaning throughout. Names (Mary, Contoso Pharmacy), drugs (generic Lipitor, metformin), dose (500 mg), and dates (2021, 2012 through 2021) are all correct. The differences are only a false start ('that the doc... My doctor'), 'Oh, I mean' versus 'Oh, huh. I mean', and 'doctor's office' versus 'your doctor's office'. None of these changes a fact.",
+              "tokensUsed": {
+                "total": 2049,
+                "prompt": 1864,
+                "completion": 185,
+                "cached": 0,
+                "numRequests": 1,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "openrouter": {
+                  "accountCharge": 0.005578,
+                  "reportedUpstreamInferenceCost": 0.005578,
+                  "reportedUpstreamPromptCost": 0.003728,
+                  "reportedUpstreamCompletionCost": 0.00185,
+                  "isByok": false
+                },
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nHi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get ahold of someone for weeks and was told that I would get a callback regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that the doc... My doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes. I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in twenty twenty one, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah. I'd be happy to check that for you, because sometimes there's a gap in the system, and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from twenty twelve through twenty twenty one. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin five hundred milligrams? Yeah. Yeah. Thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.\\n</Output>\\n<Rubric>\\nThe output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\\nwith the reference transcript below and rate how faithfully it records what was said,\\non this 1-5 Likert scale:\\n\\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\\n\\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\\nbreaks, and how numbers are written (2021 or twenty twenty-one).\\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\\nStart the reason with \\\"Rating N/5\\\".\\n\\nReference transcript:\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\\nYes, I was taking the generic form of Lipitor.\\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\\nOkay, thank you.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\nYes, I was taking the generic form of Lipitor.\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\nOkay, thank you.\n"
+              }
+            }
+          ]
+        },
+        "id": "6bb6db07-d1ce-456d-927d-efbcf57e5bfb",
+        "latencyMs": 4,
+        "namedScores": {
+          "Key terms": 1,
+          "WER": 0.046511627906976744,
+          "Likert": 1
+        },
+        "prompt": {
+          "raw": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get ahold of someone for weeks and was told that I would get a callback regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that the doc... My doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes. I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in twenty twenty one, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah. I'd be happy to check that for you, because sometimes there's a gap in the system, and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from twenty twelve through twenty twenty one. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin five hundred milligrams? Yeah. Yeah. Thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "label": "{{transcript}}",
+          "config": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          }
+        },
+        "promptId": "57b046c6411ac5c4552919da63fa3c568a42fe5adfe743ac012a9c75014a1fff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get ahold of someone for weeks and was told that I would get a callback regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that the doc... My doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes. I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in twenty twenty one, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah. I'd be happy to check that for you, because sometimes there's a gap in the system, and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from twenty twelve through twenty twenty one. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin five hundred milligrams? Yeah. Yeah. Thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "raw": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get ahold of someone for weeks and was told that I would get a callback regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that the doc... My doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes. I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in twenty twenty one, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah. I'd be happy to check that for you, because sometimes there's a gap in the system, and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from twenty twelve through twenty twenty one. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin five hundred milligrams? Yeah. Yeah. Thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0.6821705426356589,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+            "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+            "model": "deepgram/nova-3",
+            "transcript": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get ahold of someone for weeks and was told that I would get a callback regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that the doc... My doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes. I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in twenty twenty one, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah. I'd be happy to check that for you, because sometimes there's a gap in the system, and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from twenty twelve through twenty twenty one. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin five hundred milligrams? Yeah. Yeah. Thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+            "latency_s": "0.77",
+            "cost_usd": "0.008653302083337358",
+            "error": ""
+          },
+          "assert": [
+            {
+              "type": "python",
+              "metric": "WER",
+              "value": "file://metrics.py:promptfoo_wer"
+            },
+            {
+              "type": "python",
+              "metric": "Key terms",
+              "value": "file://metrics.py:promptfoo_key_terms"
+            },
+            {
+              "type": "llm-rubric",
+              "metric": "Likert",
+              "threshold": 0.75,
+              "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+            }
+          ],
+          "options": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          },
+          "description": "Row #3",
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 2049,
+            "prompt": 1864,
+            "completion": 185,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+          "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+          "model": "deepgram/nova-3",
+          "transcript": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get ahold of someone for weeks and was told that I would get a callback regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that the doc... My doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes. I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in twenty twenty one, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah. I'd be happy to check that for you, because sometimes there's a gap in the system, and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from twenty twelve through twenty twenty one. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin five hundred milligrams? Yeah. Yeah. Thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "latency_s": "0.77",
+          "cost_usd": "0.008653302083337358",
+          "error": ""
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 0.6710963455149502,
+          "reason": "All assertions passed",
+          "namedScores": {
+            "Key terms": 1,
+            "WER": 0.013289036544850499,
+            "Likert": 1
+          },
+          "namedScoreWeights": {
+            "Key terms": 1,
+            "WER": 1,
+            "Likert": 1
+          },
+          "tokensUsed": {
+            "total": 2055,
+            "prompt": 1847,
+            "completion": 208,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 0.013289036544850499,
+              "reason": "WER 1.3%: 2 wrong, 1 missing, 1 extra (reference has 301 words)",
+              "assertion": {
+                "type": "python",
+                "metric": "WER",
+                "value": "file://metrics.py:promptfoo_wer"
+              }
+            },
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "13 of 13 key-term mentions right",
+              "assertion": {
+                "type": "python",
+                "metric": "Key terms",
+                "value": "file://metrics.py:promptfoo_key_terms"
+              }
+            },
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Likert",
+                "threshold": 0.75,
+                "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "Rating 5/5. The output matches the reference in meaning throughout. Names (Mary, Contoso Pharmacy), drugs (generic Lipitor, metformin), dose (500 mg), dates (2012 through 2021, stopped in 2021) and the cholesterol reason are all correct. The differences are minor: 'calling to get a refill for' vs 'calling about a refill for', 'prescriptions' vs 'prescription', 'Oh' vs 'Oh, huh', and 'mg' vs 'milligrams'. None of these change any fact.",
+              "tokensUsed": {
+                "total": 2055,
+                "prompt": 1847,
+                "completion": 208,
+                "cached": 0,
+                "numRequests": 1,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "openrouter": {
+                  "accountCharge": 0.005774,
+                  "reportedUpstreamInferenceCost": 0.005774,
+                  "reportedUpstreamPromptCost": 0.003694,
+                  "reportedUpstreamCompletionCost": 0.00208,
+                  "isByok": false
+                },
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling to get a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescriptions. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh. I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 mg? Yeah. Yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.\\n</Output>\\n<Rubric>\\nThe output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\\nwith the reference transcript below and rate how faithfully it records what was said,\\non this 1-5 Likert scale:\\n\\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\\n\\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\\nbreaks, and how numbers are written (2021 or twenty twenty-one).\\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\\nStart the reason with \\\"Rating N/5\\\".\\n\\nReference transcript:\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\\nYes, I was taking the generic form of Lipitor.\\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\\nOkay, thank you.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\nYes, I was taking the generic form of Lipitor.\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\nOkay, thank you.\n"
+              }
+            }
+          ]
+        },
+        "id": "16ce2acc-9c33-4780-8710-8c421f25a27d",
+        "latencyMs": 3,
+        "namedScores": {
+          "Key terms": 1,
+          "WER": 0.013289036544850499,
+          "Likert": 1
+        },
+        "prompt": {
+          "raw": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling to get a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescriptions. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh. I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 mg? Yeah. Yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "label": "{{transcript}}",
+          "config": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          }
+        },
+        "promptId": "57b046c6411ac5c4552919da63fa3c568a42fe5adfe743ac012a9c75014a1fff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling to get a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescriptions. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh. I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 mg? Yeah. Yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "raw": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling to get a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescriptions. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh. I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 mg? Yeah. Yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0.6710963455149502,
+        "success": true,
+        "testCase": {
+          "vars": {
+            "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+            "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+            "model": "elevenlabs/scribe-v2-medical",
+            "transcript": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling to get a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescriptions. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh. I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 mg? Yeah. Yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+            "latency_s": "2.1",
+            "cost_usd": "0.0073787847222208805",
+            "error": ""
+          },
+          "assert": [
+            {
+              "type": "python",
+              "metric": "WER",
+              "value": "file://metrics.py:promptfoo_wer"
+            },
+            {
+              "type": "python",
+              "metric": "Key terms",
+              "value": "file://metrics.py:promptfoo_key_terms"
+            },
+            {
+              "type": "llm-rubric",
+              "metric": "Likert",
+              "threshold": 0.75,
+              "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+            }
+          ],
+          "options": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          },
+          "description": "Row #4",
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 2055,
+            "prompt": 1847,
+            "completion": 208,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+          "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+          "model": "elevenlabs/scribe-v2-medical",
+          "transcript": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling to get a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescriptions. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh. I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 mg? Yeah. Yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "latency_s": "2.1",
+          "cost_usd": "0.0073787847222208805",
+          "error": ""
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "Rating 3/5. The transcript matches the reference almost word for word, and the drugs (Lipitor, Metformin 500 mg), dates (2012–2021), and caller name (Mary) are all correct. However, the pharmacy name is wrong: 'Contessa Pharmacy' instead of 'Contoso Pharmacy'. The rubric counts a wrong name as one incorrect fact.",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.47657381378311614,
+          "reason": "Rating 3/5. The transcript matches the reference almost word for word, and the drugs (Lipitor, Metformin 500 mg), dates (2012–2021), and caller name (Mary) are all correct. However, the pharmacy name is wrong: 'Contessa Pharmacy' instead of 'Contoso Pharmacy'. The rubric counts a wrong name as one incorrect fact.",
+          "namedScores": {
+            "Key terms": 0.9230769230769231,
+            "WER": 0.006644518272425249,
+            "Likert": 0.5
+          },
+          "namedScoreWeights": {
+            "Key terms": 1,
+            "WER": 1,
+            "Likert": 1
+          },
+          "tokensUsed": {
+            "total": 2250,
+            "prompt": 1842,
+            "completion": 408,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 0.006644518272425249,
+              "reason": "WER 0.7%: 1 wrong, 1 missing, 0 extra (reference has 301 words)",
+              "assertion": {
+                "type": "python",
+                "metric": "WER",
+                "value": "file://metrics.py:promptfoo_wer"
+              }
+            },
+            {
+              "pass": false,
+              "score": 0.9230769230769231,
+              "reason": "12 of 13 key-term mentions right; missed: Contoso (0 of 1)",
+              "assertion": {
+                "type": "python",
+                "metric": "Key terms",
+                "value": "file://metrics.py:promptfoo_key_terms"
+              }
+            },
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Likert",
+                "threshold": 0.75,
+                "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+              },
+              "pass": false,
+              "score": 0.5,
+              "reason": "Rating 3/5. The transcript matches the reference almost word for word, and the drugs (Lipitor, Metformin 500 mg), dates (2012–2021), and caller name (Mary) are all correct. However, the pharmacy name is wrong: 'Contessa Pharmacy' instead of 'Contoso Pharmacy'. The rubric counts a wrong name as one incorrect fact.",
+              "tokensUsed": {
+                "total": 2250,
+                "prompt": 1842,
+                "completion": 408,
+                "cached": 0,
+                "numRequests": 1,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "openrouter": {
+                  "accountCharge": 0.007764,
+                  "reportedUpstreamInferenceCost": 0.007764,
+                  "reportedUpstreamPromptCost": 0.003684,
+                  "reportedUpstreamCompletionCost": 0.00408,
+                  "isByok": false
+                },
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nHi, thank you for calling Contessa Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay, so I see that your doctor stopped prescribing these drugs in 2021 actually. Oh really? That doesn't sound right. I don't remember him canceling my prescription. Okay, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, Metformin. Would you like us to go ahead and fill that prescription for you for pickup, Metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay, thank you.\\n</Output>\\n<Rubric>\\nThe output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\\nwith the reference transcript below and rate how faithfully it records what was said,\\non this 1-5 Likert scale:\\n\\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\\n\\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\\nbreaks, and how numbers are written (2021 or twenty twenty-one).\\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\\nStart the reason with \\\"Rating N/5\\\".\\n\\nReference transcript:\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\\nYes, I was taking the generic form of Lipitor.\\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\\nOkay, thank you.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\nYes, I was taking the generic form of Lipitor.\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\nOkay, thank you.\n"
+              }
+            }
+          ]
+        },
+        "id": "e3770e8b-7738-4c98-9c8a-bea6a3f8648e",
+        "latencyMs": 3,
+        "namedScores": {
+          "Key terms": 0.9230769230769231,
+          "WER": 0.006644518272425249,
+          "Likert": 0.5
+        },
+        "prompt": {
+          "raw": "Hi, thank you for calling Contessa Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay, so I see that your doctor stopped prescribing these drugs in 2021 actually. Oh really? That doesn't sound right. I don't remember him canceling my prescription. Okay, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, Metformin. Would you like us to go ahead and fill that prescription for you for pickup, Metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay, thank you.",
+          "label": "{{transcript}}",
+          "config": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          }
+        },
+        "promptId": "57b046c6411ac5c4552919da63fa3c568a42fe5adfe743ac012a9c75014a1fff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "Hi, thank you for calling Contessa Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay, so I see that your doctor stopped prescribing these drugs in 2021 actually. Oh really? That doesn't sound right. I don't remember him canceling my prescription. Okay, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, Metformin. Would you like us to go ahead and fill that prescription for you for pickup, Metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay, thank you.",
+          "raw": "Hi, thank you for calling Contessa Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay, so I see that your doctor stopped prescribing these drugs in 2021 actually. Oh really? That doesn't sound right. I don't remember him canceling my prescription. Okay, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, Metformin. Would you like us to go ahead and fill that prescription for you for pickup, Metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay, thank you.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0.47657381378311614,
+        "success": false,
+        "testCase": {
+          "vars": {
+            "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+            "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+            "model": "google/gemini-3.5-transcribe",
+            "transcript": "Hi, thank you for calling Contessa Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay, so I see that your doctor stopped prescribing these drugs in 2021 actually. Oh really? That doesn't sound right. I don't remember him canceling my prescription. Okay, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, Metformin. Would you like us to go ahead and fill that prescription for you for pickup, Metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay, thank you.",
+            "latency_s": "4.36",
+            "cost_usd": "0.010972",
+            "error": ""
+          },
+          "assert": [
+            {
+              "type": "python",
+              "metric": "WER",
+              "value": "file://metrics.py:promptfoo_wer"
+            },
+            {
+              "type": "python",
+              "metric": "Key terms",
+              "value": "file://metrics.py:promptfoo_key_terms"
+            },
+            {
+              "type": "llm-rubric",
+              "metric": "Likert",
+              "threshold": 0.75,
+              "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+            }
+          ],
+          "options": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          },
+          "description": "Row #5",
+          "metadata": {}
+        },
+        "testIdx": 4,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 2250,
+            "prompt": 1842,
+            "completion": 408,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+          "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+          "model": "google/gemini-3.5-transcribe",
+          "transcript": "Hi, thank you for calling Contessa Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay, so I see that your doctor stopped prescribing these drugs in 2021 actually. Oh really? That doesn't sound right. I don't remember him canceling my prescription. Okay, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, Metformin. Would you like us to go ahead and fill that prescription for you for pickup, Metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay, thank you.",
+          "latency_s": "4.36",
+          "cost_usd": "0.010972",
+          "error": ""
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "12 of 13 key-term mentions right; missed: Contoso (0 of 1)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.6454553198739245,
+          "reason": "12 of 13 key-term mentions right; missed: Contoso (0 of 1)",
+          "namedScores": {
+            "Key terms": 0.9230769230769231,
+            "WER": 0.013289036544850499,
+            "Likert": 1
+          },
+          "namedScoreWeights": {
+            "Key terms": 1,
+            "WER": 1,
+            "Likert": 1
+          },
+          "tokensUsed": {
+            "total": 2099,
+            "prompt": 1892,
+            "completion": 207,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 0.013289036544850499,
+              "reason": "WER 1.3%: 1 wrong, 1 missing, 2 extra (reference has 301 words)",
+              "assertion": {
+                "type": "python",
+                "metric": "WER",
+                "value": "file://metrics.py:promptfoo_wer"
+              }
+            },
+            {
+              "pass": false,
+              "score": 0.9230769230769231,
+              "reason": "12 of 13 key-term mentions right; missed: Contoso (0 of 1)",
+              "assertion": {
+                "type": "python",
+                "metric": "Key terms",
+                "value": "file://metrics.py:promptfoo_key_terms"
+              }
+            },
+            {
+              "assertion": {
+                "type": "llm-rubric",
+                "metric": "Likert",
+                "threshold": 0.75,
+                "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+              },
+              "pass": true,
+              "score": 1,
+              "reason": "Rating 5/5. The output matches the reference in meaning throughout. The names, drugs (Lipitor generic, metformin 500 mg), dates (2012 through 2021) and the request all match. The differences are fillers (uh, um), a false start ('doc- my doctor'), and the 'Contosa' vs 'Contoso' spelling of the pharmacy name, which is a trivial transcription variant. 'Oh, huh' is rendered as 'Oh, I mean', and Mary's line is merged into the pharmacist's turn. Neither changes any fact.",
+              "tokensUsed": {
+                "total": 2099,
+                "prompt": 1892,
+                "completion": 207,
+                "cached": 0,
+                "numRequests": 1,
+                "completionDetails": {
+                  "reasoning": 0,
+                  "cacheReadInputTokens": 0,
+                  "cacheCreationInputTokens": 0
+                }
+              },
+              "metadata": {
+                "openrouter": {
+                  "accountCharge": 0.005854,
+                  "reportedUpstreamInferenceCost": 0.005854,
+                  "reportedUpstreamPromptCost": 0.003784,
+                  "reportedUpstreamCompletionCost": 0.00207,
+                  "isByok": false
+                },
+                "renderedGradingPrompt": "[{\"role\":\"system\",\"content\":\"You are grading output according to a user-specified rubric. If the statement in the rubric is true, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\\n\\nExamples:\\n\\n<Output>Hello world</Output>\\n<Rubric>Content contains a greeting</Rubric>\\n{\\\"reason\\\": \\\"the content contains the word 'Hello'\\\", \\\"pass\\\": true, \\\"score\\\": 1.0}\\n\\n<Output>Avast ye swabs, repel the invaders!</Output>\\n<Rubric>Does not speak like a pirate</Rubric>\\n{\\\"reason\\\": \\\"'avast ye' is a common pirate term\\\", \\\"pass\\\": false, \\\"score\\\": 0.0}\"},{\"role\":\"user\",\"content\":\"<Output>\\nHi, thank you for calling Contosa Pharmacy. Who am I speaking with today?\\nGood afternoon. Uh, my name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\\nI understand your frustration, Mary. Um, can you tell me what exactly you're trying to accomplish?\\nYes, I'm trying to get a refill of my prescription drugs that the doc- my doctor prescribed to me for cholesterol.\\nOkay, um, certainly happy to check that for you. One moment, please. Uh, I see here that you were on a generic form of Lipitor, is that right?\\nUh, yes, I was taking the generic form of Lipitor.\\nOkay, uh, so I see that your doctor stopped prescribing these drugs in 2021, actually.\\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. so let me take a look here. Just a moment. so I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. would you check, please? Okay, yeah, according to the latest records, uh, provided by your doctor's office, you're now on a different drug, metformin. Um, would you like us to go ahead and fill that prescription for you for pickup, uh, metformin 500 milligrams?\\nUh, yeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\\nUh, you're very welcome, Mary. Uh, please let us know if there's anything else we can do for you today.\\nOkay, thank you.\\n</Output>\\n<Rubric>\\nThe output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\\nwith the reference transcript below and rate how faithfully it records what was said,\\non this 1-5 Likert scale:\\n\\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\\n\\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\\nbreaks, and how numbers are written (2021 or twenty twenty-one).\\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\\nStart the reason with \\\"Rating N/5\\\".\\n\\nReference transcript:\\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\\nYes, I was taking the generic form of Lipitor.\\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\\nOkay, thank you.\\n\\n</Rubric>\"}]",
+                "renderedAssertionValue": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n5: Same meaning as the reference all the way through. Every name, drug, dose, date and number is right. Any differences are only fillers, punctuation, capitalization or how numbers are written.\n4: Same meaning. A few words are wrong or missing, but no fact changes and nothing is made up.\n3: Mostly right, but one fact is wrong, missing or made up: a name, drug, dose, date, number, or what someone asked for.\n2: Several facts are wrong, missing or made up. Someone reading it would get the wrong idea about the call.\n1: Unusable. Large parts are missing or made up, or it is not this conversation.\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\nHi, thank you for calling Contoso Pharmacy. Who am I speaking with today?\nGood afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol.\nOkay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor, is that right?\nYes, I was taking the generic form of Lipitor.\nOkay, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.\nOh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please?\nOkay, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams?\nYeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nYou're very welcome, Mary. Please let us know if there's anything else we can do for you today.\nOkay, thank you.\n"
+              }
+            }
+          ]
+        },
+        "id": "2f49f38f-5340-40ec-9dc7-2aed09ce52c2",
+        "latencyMs": 3,
+        "namedScores": {
+          "Key terms": 0.9230769230769231,
+          "WER": 0.013289036544850499,
+          "Likert": 1
+        },
+        "prompt": {
+          "raw": "Hi, thank you for calling Contosa Pharmacy. Who am I speaking with today?\nGood afternoon. Uh, my name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Um, can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that the doc- my doctor prescribed to me for cholesterol.\nOkay, um, certainly happy to check that for you. One moment, please. Uh, I see here that you were on a generic form of Lipitor, is that right?\nUh, yes, I was taking the generic form of Lipitor.\nOkay, uh, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. so let me take a look here. Just a moment. so I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. would you check, please? Okay, yeah, according to the latest records, uh, provided by your doctor's office, you're now on a different drug, metformin. Um, would you like us to go ahead and fill that prescription for you for pickup, uh, metformin 500 milligrams?\nUh, yeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nUh, you're very welcome, Mary. Uh, please let us know if there's anything else we can do for you today.\nOkay, thank you.",
+          "label": "{{transcript}}",
+          "config": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          }
+        },
+        "promptId": "57b046c6411ac5c4552919da63fa3c568a42fe5adfe743ac012a9c75014a1fff",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "Hi, thank you for calling Contosa Pharmacy. Who am I speaking with today?\nGood afternoon. Uh, my name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Um, can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that the doc- my doctor prescribed to me for cholesterol.\nOkay, um, certainly happy to check that for you. One moment, please. Uh, I see here that you were on a generic form of Lipitor, is that right?\nUh, yes, I was taking the generic form of Lipitor.\nOkay, uh, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. so let me take a look here. Just a moment. so I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. would you check, please? Okay, yeah, according to the latest records, uh, provided by your doctor's office, you're now on a different drug, metformin. Um, would you like us to go ahead and fill that prescription for you for pickup, uh, metformin 500 milligrams?\nUh, yeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nUh, you're very welcome, Mary. Uh, please let us know if there's anything else we can do for you today.\nOkay, thank you.",
+          "raw": "Hi, thank you for calling Contosa Pharmacy. Who am I speaking with today?\nGood afternoon. Uh, my name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Um, can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that the doc- my doctor prescribed to me for cholesterol.\nOkay, um, certainly happy to check that for you. One moment, please. Uh, I see here that you were on a generic form of Lipitor, is that right?\nUh, yes, I was taking the generic form of Lipitor.\nOkay, uh, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. so let me take a look here. Just a moment. so I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. would you check, please? Okay, yeah, according to the latest records, uh, provided by your doctor's office, you're now on a different drug, metformin. Um, would you like us to go ahead and fill that prescription for you for pickup, uh, metformin 500 milligrams?\nUh, yeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nUh, you're very welcome, Mary. Uh, please let us know if there's anything else we can do for you today.\nOkay, thank you.",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0.6454553198739245,
+        "success": false,
+        "testCase": {
+          "vars": {
+            "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+            "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+            "model": "microsoft/mai-transcribe-2",
+            "transcript": "Hi, thank you for calling Contosa Pharmacy. Who am I speaking with today?\nGood afternoon. Uh, my name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Um, can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that the doc- my doctor prescribed to me for cholesterol.\nOkay, um, certainly happy to check that for you. One moment, please. Uh, I see here that you were on a generic form of Lipitor, is that right?\nUh, yes, I was taking the generic form of Lipitor.\nOkay, uh, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. so let me take a look here. Just a moment. so I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. would you check, please? Okay, yeah, according to the latest records, uh, provided by your doctor's office, you're now on a different drug, metformin. Um, would you like us to go ahead and fill that prescription for you for pickup, uh, metformin 500 milligrams?\nUh, yeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nUh, you're very welcome, Mary. Uh, please let us know if there's anything else we can do for you today.\nOkay, thank you.",
+            "latency_s": "1.39",
+            "cost_usd": "0.003361111111111111",
+            "error": ""
+          },
+          "assert": [
+            {
+              "type": "python",
+              "metric": "WER",
+              "value": "file://metrics.py:promptfoo_wer"
+            },
+            {
+              "type": "python",
+              "metric": "Key terms",
+              "value": "file://metrics.py:promptfoo_key_terms"
+            },
+            {
+              "type": "llm-rubric",
+              "metric": "Likert",
+              "threshold": 0.75,
+              "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+            }
+          ],
+          "options": {
+            "provider": "openrouter:anthropic/claude-sonnet-5.5"
+          },
+          "description": "Row #6",
+          "metadata": {}
+        },
+        "testIdx": 5,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 2099,
+            "prompt": 1892,
+            "completion": 207,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "reference": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+          "likert_scale": "file://C:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt",
+          "model": "microsoft/mai-transcribe-2",
+          "transcript": "Hi, thank you for calling Contosa Pharmacy. Who am I speaking with today?\nGood afternoon. Uh, my name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Um, can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that the doc- my doctor prescribed to me for cholesterol.\nOkay, um, certainly happy to check that for you. One moment, please. Uh, I see here that you were on a generic form of Lipitor, is that right?\nUh, yes, I was taking the generic form of Lipitor.\nOkay, uh, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. so let me take a look here. Just a moment. so I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. would you check, please? Okay, yeah, according to the latest records, uh, provided by your doctor's office, you're now on a different drug, metformin. Um, would you like us to go ahead and fill that prescription for you for pickup, uh, metformin 500 milligrams?\nUh, yeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nUh, you're very welcome, Mary. Uh, please let us know if there's anything else we can do for you today.\nOkay, thank you.",
+          "latency_s": "1.39",
+          "cost_usd": "0.003361111111111111",
+          "error": ""
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      }
+    ],
+    "stats": {
+      "successes": 4,
+      "failures": 2,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 6,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 12839,
+          "prompt": 11131,
+          "completion": 1708,
+          "cached": 0,
+          "numRequests": 6,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 5923,
+      "evaluationDurationMs": 5923
+    }
+  },
+  "config": {
+    "description": "Contoso Pharmacy call, speech-to-text accuracy",
+    "prompts": [
+      "{{transcript}}"
+    ],
+    "providers": [
+      "echo"
+    ],
+    "tests": [
+      {
+        "vars": {
+          "model": "openai/whisper-1",
+          "transcript": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by a doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup? Metformin 500 milligrams? Yeah. Yeah. Thank you so much. I'm almost out. That'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "latency_s": "7.13",
+          "cost_usd": "0.0121",
+          "error": ""
+        },
+        "assert": [],
+        "options": {},
+        "description": "Row #1"
+      },
+      {
+        "vars": {
+          "model": "openai/gpt-4o-mini-transcribe",
+          "transcript": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacting me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. OK, I'm certainly happy to check that for you. One moment, please. I see here that you are on a generic form of Lipitor, is that right? Yes, I was taking the generic form of Lipitor. OK, so I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. OK, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check, please? OK, yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. OK, thank you.",
+          "latency_s": "3.7",
+          "cost_usd": "0.00338875",
+          "error": ""
+        },
+        "assert": [],
+        "options": {},
+        "description": "Row #2"
+      },
+      {
+        "vars": {
+          "model": "deepgram/nova-3",
+          "transcript": "Hi. Thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get ahold of someone for weeks and was told that I would get a callback regarding my situation, but it's been weeks and no one's contacted me. So I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that the doc... My doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes. I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in twenty twenty one, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescription. Okay. Yeah. I'd be happy to check that for you, because sometimes there's a gap in the system, and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from twenty twelve through twenty twenty one. Oh, I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah. According to the latest records provided by doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin five hundred milligrams? Yeah. Yeah. Thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "latency_s": "0.77",
+          "cost_usd": "0.008653302083337358",
+          "error": ""
+        },
+        "assert": [],
+        "options": {},
+        "description": "Row #3"
+      },
+      {
+        "vars": {
+          "model": "elevenlabs/scribe-v2-medical",
+          "transcript": "Hi, thank you for calling Contoso Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling to get a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes. I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay. Certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay. So I see that your doctor stopped prescribing these drugs in 2021, actually. Oh, really? That doesn't sound right. I don't remember him canceling my prescriptions. Okay. Yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh. I mean, I'm definitely supposed to be taking something else. Would you check, please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, metformin. Would you like us to go ahead and fill that prescription for you for pickup, metformin 500 mg? Yeah. Yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay. Thank you.",
+          "latency_s": "2.1",
+          "cost_usd": "0.0073787847222208805",
+          "error": ""
+        },
+        "assert": [],
+        "options": {},
+        "description": "Row #4"
+      },
+      {
+        "vars": {
+          "model": "google/gemini-3.5-transcribe",
+          "transcript": "Hi, thank you for calling Contessa Pharmacy. Who am I speaking with today? Good afternoon. My name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call. I understand your frustration, Mary. Can you tell me what exactly you're trying to accomplish? Yes, I'm trying to get a refill of my prescription drugs that my doctor prescribed to me for cholesterol. Okay, certainly happy to check that for you. One moment, please. I see here that you were on a generic form of Lipitor. Is that right? Yes, I was taking the generic form of Lipitor. Okay, so I see that your doctor stopped prescribing these drugs in 2021 actually. Oh really? That doesn't sound right. I don't remember him canceling my prescription. Okay, yeah, be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported. So let me take a look here. Just a moment. So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, huh. I mean, I'm definitely supposed to be taking something else. Would you check please? Okay. Yeah, according to the latest records provided by your doctor's office, you're now on a different drug, Metformin. Would you like us to go ahead and fill that prescription for you for pickup, Metformin 500 milligrams? Yeah, yeah, thank you so much. I'm almost out, so that'd be perfect. You're very welcome, Mary. Please let us know if there's anything else we can do for you today. Okay, thank you.",
+          "latency_s": "4.36",
+          "cost_usd": "0.010972",
+          "error": ""
+        },
+        "assert": [],
+        "options": {},
+        "description": "Row #5"
+      },
+      {
+        "vars": {
+          "model": "microsoft/mai-transcribe-2",
+          "transcript": "Hi, thank you for calling Contosa Pharmacy. Who am I speaking with today?\nGood afternoon. Uh, my name is Mary. I'm calling about a refill for my prescribed medications. I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation, but it's been weeks and no one's contacted me, so I thought I'd call.\nI understand your frustration, Mary. Um, can you tell me what exactly you're trying to accomplish?\nYes, I'm trying to get a refill of my prescription drugs that the doc- my doctor prescribed to me for cholesterol.\nOkay, um, certainly happy to check that for you. One moment, please. Uh, I see here that you were on a generic form of Lipitor, is that right?\nUh, yes, I was taking the generic form of Lipitor.\nOkay, uh, so I see that your doctor stopped prescribing these drugs in 2021, actually.\nOh, really? That doesn't sound right. I don't remember him canceling my prescription.\nOkay, yeah, I'd be happy to check that for you, because sometimes there's a gap in the system and it just doesn't get reported. so let me take a look here. Just a moment. so I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021. Oh, I mean, I'm definitely supposed to be taking something else. would you check, please? Okay, yeah, according to the latest records, uh, provided by your doctor's office, you're now on a different drug, metformin. Um, would you like us to go ahead and fill that prescription for you for pickup, uh, metformin 500 milligrams?\nUh, yeah, yeah, thank you so much. I'm almost out, so that'd be perfect.\nUh, you're very welcome, Mary. Uh, please let us know if there's anything else we can do for you today.\nOkay, thank you.",
+          "latency_s": "1.39",
+          "cost_usd": "0.003361111111111111",
+          "error": ""
+        },
+        "assert": [],
+        "options": {},
+        "description": "Row #6"
+      }
+    ],
+    "outputPath": "results/promptfoo.json",
+    "extensions": [],
+    "evaluateOptions": {
+      "cache": false
+    },
+    "defaultTest": {
+      "vars": {
+        "reference": "file://c:\\git\\evals-beginning-to-end\\audio-accuracy\\data\\contoso_pharmacy_reference.txt",
+        "likert_scale": "file://c:\\git\\evals-beginning-to-end\\audio-accuracy\\likert_scale.txt"
+      },
+      "options": {
+        "provider": "openrouter:anthropic/claude-sonnet-5.5"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "metric": "WER",
+          "value": "file://metrics.py:promptfoo_wer"
+        },
+        {
+          "type": "python",
+          "metric": "Key terms",
+          "value": "file://metrics.py:promptfoo_key_terms"
+        },
+        {
+          "type": "llm-rubric",
+          "metric": "Likert",
+          "threshold": 0.75,
+          "value": "The output is a speech-to-text transcript of a phone call to a pharmacy. Compare it\nwith the reference transcript below and rate how faithfully it records what was said,\non this 1-5 Likert scale:\n\n{{likert_scale}}\n\nIgnore fillers (uh, um), false starts, punctuation, capitalization, speaker line\nbreaks, and how numbers are written (2021 or twenty twenty-one).\nSet score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.\nStart the reason with \"Rating N/5\".\n\nReference transcript:\n{{reference}}\n"
+        }
+      ]
+    },
+    "basePath": "c:\\git\\evals-beginning-to-end\\audio-accuracy"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.125.1",
+    "nodeVersion": "v22.23.5",
+    "platform": "win32",
+    "arch": "x64",
+    "exportedAt": "2026-11-19T01:01:13.990Z",
+    "evaluationCreatedAt": "2026-11-19T01:01:07.653Z"
+  },
+  "vars": [
+    "reference",
+    "likert_scale",
+    "model",
+    "transcript",
+    "latency_s",
+    "cost_usd",
+    "error"
+  ],
+  "runtimeOptions": {
+    "maxConcurrency": 4,
+    "showProgressBar": false,
+    "eventSource": "cli",
+    "cache": false,
+    "repeat": 1
+  }
+}

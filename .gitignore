@@ -1,0 +1,27 @@
+# Secrets: API keys live in .env, never commit them.
+# .env.example is the template with no real keys, so it stays.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# DeepEval cache (results/ is kept so the runs are viewable)
+.deepeval/
+*.lock
+!uv.lock
+
+# Node
+node_modules/
+
+# OS and editor clutter
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

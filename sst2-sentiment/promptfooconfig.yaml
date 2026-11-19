@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+#
+# SST-2 sentiment eval with promptfoo.
+# Every row of data/sst2_validation.csv is one test case: promptfoo puts the row's
+# sentence into prompt.txt, sends it to each model, and checks the reply against the label.
+
+description: SST-2 sentiment classification
+
+prompts:
+  - file://prompt.txt
+
+# Six models side by side, all called through OpenRouter.
+# Swap in any model id from https://openrouter.ai/models
+providers:
+  - openrouter:anthropic/claude-haiku-5.5
+  - openrouter:anthropic/claude-haiku-4.5 # oldest Haiku still served (Claude 3.5 Haiku is retired)
+  - openrouter:openai/gpt-4o-mini
+  - openrouter:openai/gpt-3.5-turbo-0613 # dated id: plain gpt-3.5-turbo has no providers left
+  # Small, cheap models that get noticeably more wrong, for contrast.
+  - openrouter:google/gemma-3-4b-it
+  - openrouter:meta-llama/llama-3.2-1b-instruct
+  # Optional: a model on your own machine. See "Run a local model" in README.md.
+  # - id: ollama:chat:llama3
+  #   config:
+  #     temperature: 0 # Ollama defaults to 0.8; promptfoo already sends 0 to the models above
+
+# The CSV columns (idx, sentence, label) become the variables {{idx}}, {{sentence}}, {{label}}.
+tests: file://data/sst2_validation.csv
+
+# Call the model on every run so every result records its latency.
+# Cached answers are replayed instantly and have no latency.
+evaluateOptions:
+  cache: false
+
+# Save each run's results (answers, pass/fail, latencyMs) to a file for reports.
+# The web viewer (npx promptfoo view) keeps every run too.
+outputPath: results/promptfoo.json
+
+defaultTest:
+  options:
+    # Lowercase the reply and drop everything but letters: "Positive." -> "positive".
+    # test_deepeval.py normalizes replies the same way.
+    transform: output.toLowerCase().replace(/[^a-z]/g, '')
+  assert:
+    - type: equals
+      value: '{{label}}'

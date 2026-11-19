@@ -1,0 +1,4 @@
+Classify the sentiment of this movie review sentence as positive or negative.
+Reply with exactly one word: positive or negative.
+
+Sentence: {{sentence}}

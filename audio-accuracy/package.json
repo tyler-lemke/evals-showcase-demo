@@ -1,0 +1,9 @@
+{
+  "name": "audio-accuracy",
+  "private": true,
+  "description": "Speech-to-text accuracy evals with promptfoo and DeepEval, via OpenRouter",
+  "devDependencies": {
+    "node": "^22.23.5",
+    "promptfoo": "^0.125.1"
+  }
+}
