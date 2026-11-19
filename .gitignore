@@ -12,8 +12,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
-# DeepEval cache (results/ is kept so the runs are viewable)
+# DeepEval cache and per-run files (results/ is kept so the latest grades are viewable)
 .deepeval/
+**/results/test_run_*.json
 *.lock
 !uv.lock
 
