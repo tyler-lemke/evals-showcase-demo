@@ -1,0 +1,13 @@
+[
+  {
+    "role": "system",
+    "content": "You grade an image against a rubric. Respond with only a JSON object: {\"reason\": string, \"score\": number between 0 and 1, \"pass\": boolean}."
+  },
+  {
+    "role": "user",
+    "content": [
+      { "type": "image_url", "image_url": { "url": "{{output}}" } },
+      { "type": "text", "text": "{{rubric}}" }
+    ]
+  }
+]

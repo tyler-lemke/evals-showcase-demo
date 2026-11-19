@@ -1,0 +1,9 @@
+{
+  "name": "image-generation",
+  "private": true,
+  "description": "Image generation evals with promptfoo and DeepEval, via OpenRouter",
+  "devDependencies": {
+    "node": "^22.23.5",
+    "promptfoo": "^0.125.1"
+  }
+}

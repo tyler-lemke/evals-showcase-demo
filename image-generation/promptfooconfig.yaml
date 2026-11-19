@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+#
+# Image generation, graded with promptfoo.
+# generate.py has already asked every model for the image and saved it in results/images/.
+# promptfoo only grades them: a vision judge looks at each image and gives one holistic
+# 1-5 Likert rating. test_deepeval.py grades exactly the same images.
+
+description: Animal protest signs, image generation
+
+# load_image.js returns the saved image named in the CSV's image column, so the "output"
+# being graded is that image. No image model is called here.
+prompts:
+  - '{{prompt}}'
+providers:
+  - file://load_image.js
+
+# One test per prompt per model. The CSV columns (prompt_id, prompt, model, image, ...)
+# become the variables {{prompt}}, {{model}}, {{image}} and so on.
+tests: file://results/images.csv
+
+defaultTest:
+  vars:
+    likert_scale: file://likert_scale.txt
+  options:
+    # The vision judge. test_deepeval.py uses the same one.
+    provider: openrouter:anthropic/claude-sonnet-5.5
+    # llm-rubric normally sends the judge text only. This chat prompt sends the image
+    # ({{output}}) as an image and the rubric below as text.
+    rubricPrompt: file://image_judge.json
+  assert:
+    # A judge model rates the image on a 1-5 Likert scale.
+    # The score maps 1-5 onto 0-1 the same way DeepEval's GEval does: 4 -> 0.75.
+    - type: llm-rubric
+      metric: Likert
+      threshold: 0.75 # pass at 4 or 5
+      value: |
+        The image was made by an image generation model from this prompt:
+        {{prompt}}
+
+        Read any text in the image letter by letter, exactly as written, before comparing
+        it with the prompt. Do not assume the text is correct because the prompt says what
+        it should be. Then rate how well the image matches the prompt on this 1-5 scale:
+
+        {{likert_scale}}
+
+        Set score to (rating - 1) / 4, so 1 = 0, 2 = 0.25, 3 = 0.5, 4 = 0.75, 5 = 1.
+        Start the reason with "Rating N/5".
+
+# Grade fresh on every run, so a run never shows an earlier run's judge ratings.
+evaluateOptions:
+  cache: false
+
+outputPath: results/promptfoo.json

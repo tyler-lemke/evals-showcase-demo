@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.deepeval/
+node_modules/
+
+# promptfoo grades with every image inlined as base64, so this file is ~36 MB per run.
+# The images themselves are in results/images/; see grades with `npx promptfoo view`.
+results/promptfoo.json

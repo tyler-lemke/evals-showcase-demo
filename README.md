@@ -13,14 +13,15 @@ with its own setup steps.
 |--------|-------------------|
 | [sst2-sentiment/](sst2-sentiment/) | Sentiment classification on SST-2: one right answer per sentence, graded by exact match |
 | [audio-accuracy/](audio-accuracy/) | Speech-to-text on a recorded pharmacy call: six models transcribe it once, then both tools grade word error rate, key terms (drugs, doses, dates) and a 1-5 Likert judge |
+| [image-generation/](image-generation/) | Image generation with no reference answer: four models draw a cat and a dog holding protest signs, and a vision judge rates each image 1-5 in both tools |
 
 ## Install
 
 You need [uv](https://docs.astral.sh/uv/), [Node.js](https://nodejs.org), Python 3 and an
-[OpenRouter API key](https://openrouter.ai/keys). Then, inside either folder:
+[OpenRouter API key](https://openrouter.ai/keys). Then, inside any folder:
 
 ```bash
-cd sst2-sentiment      # or audio-accuracy
+cd sst2-sentiment      # or audio-accuracy, image-generation
 npm install            # promptfoo, plus a local Node 22
 uv sync                # Python environment with DeepEval
 cp .env.example .env   # then paste your OpenRouter key into .env
@@ -28,14 +29,14 @@ cp .env.example .env   # then paste your OpenRouter key into .env
 
 ## Accuracy, latency and cost
 
-Choosing a model means trading off three things. Both evals record all three for every model, so
+Choosing a model means trading off three things. Every eval records all three for every model, so
 you can compare them side by side.
 
 | | What it means | How this repo measures it |
 |-|---------------|---------------------------|
-| **Accuracy** | Does the model give the right answer? | Exact match against a label (SST-2); word error rate, key-term recall and an LLM judge (audio) |
-| **Latency** | How long does the user wait? | Wall-clock time of each API call: `latencyMs` in promptfoo, `completionTime` in DeepEval, `latency_s` in `audio-accuracy/results/transcripts.csv` |
-| **Cost** | What does each call cost? | The price OpenRouter reports for each call: `cost` in promptfoo's results, `cost_usd` in `transcripts.csv` |
+| **Accuracy** | Does the model give the right answer? | Exact match against a label (SST-2); word error rate, key-term recall and an LLM judge (audio); a vision judge (images) |
+| **Latency** | How long does the user wait? | Wall-clock time of each API call: `latencyMs` in promptfoo, `completionTime` in DeepEval, `latency_s` in `transcripts.csv` and `images.csv` |
+| **Cost** | What does each call cost? | The price OpenRouter reports for each call: `cost` in promptfoo's results, `cost_usd` in `transcripts.csv` and `images.csv` |
 
 The best model on one axis is rarely best on all three. From the first audio run:
 
@@ -48,7 +49,7 @@ The best model on one axis is rarely best on all three. From the first audio run
 
 ### Accuracy has more than one meaning
 
-The two folders grade accuracy in different ways, and the choice matters:
+The folders grade accuracy in different ways, and the choice matters:
 
 - **Code checks** (exact match, word error rate, key terms) are fast, free and give the same score
   every run. Use them whenever there's a right answer you can write down.
@@ -64,7 +65,7 @@ The two folders grade accuracy in different ways, and the choice matters:
 - **Test on data the model hasn't seen.** A model can score well on a public benchmark because the
   answers were in its training data. That's one more reason to build evals from your own examples.
 - **Turn caching off.** A cached answer comes back instantly and for free, so it hides the real
-  latency and cost. Both folders turn promptfoo's cache off, and DeepEval doesn't cache by default.
+  latency and cost. Every folder turns promptfoo's cache off, and DeepEval doesn't cache by default.
 - **Run more than once.** Latency varies with network and provider load, and the first call to a
   model is usually slower. LLM judges vary too. Compare averages, not single calls.
 - **Expect some tests to fail.** A failing test is a wrong answer you found before your users did.
@@ -82,6 +83,7 @@ out of your test data so the model isn't handed answers, and use neutral placeho
 |--------|---------|---------|
 | [sst2-sentiment/](sst2-sentiment/) | [Stanford Sentiment Treebank (SST-2)](https://nlp.stanford.edu/sentiment/), validation split from [Hugging Face](https://huggingface.co/datasets/stanfordnlp/sst2) | None published; "unknown" on the Hugging Face card |
 | [audio-accuracy/](audio-accuracy/) | Contoso Pharmacy call from Microsoft's [call-center sample](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/scenarios/call-center) | MIT (Microsoft) |
+| [image-generation/](image-generation/) | None: the images are generated on each run from the prompts in `prompts.csv` | Not applicable |
 
 ## Further resources
 

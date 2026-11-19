@@ -1,0 +1,14 @@
+[project]
+name = "image-generation"
+version = "0.1.0"
+description = "Image generation evals with DeepEval, via OpenRouter"
+requires-python = ">=3.11"
+dependencies = [
+  "deepeval",
+  "openai",
+  "portalocker[win32]",  # stops DeepEval printing a file-lock warning per test on Windows
+  "python-dotenv",
+]
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"  # silences a pytest-asyncio warning on every run

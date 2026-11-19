@@ -1,0 +1,9 @@
+prompt_id,prompt,model,image,mime,latency_s,cost_usd,error
+cat,"A photo of a cat holding a protest sign that reads ""MORE TUNA, LESS VET""",openai/gpt-image-2,results/images/cat__openai__gpt-image-2.png,image/png,13.24,0.00616,
+cat,"A photo of a cat holding a protest sign that reads ""MORE TUNA, LESS VET""",google/gemini-3-pro-image,results/images/cat__google__gemini-3-pro-image.png,image/png,15.87,0.1372,
+cat,"A photo of a cat holding a protest sign that reads ""MORE TUNA, LESS VET""",black-forest-labs/flux.2-pro,results/images/cat__black-forest-labs__flux.2-pro.png,image/png,8.91,0.03,
+cat,"A photo of a cat holding a protest sign that reads ""MORE TUNA, LESS VET""",google/gemini-2.5-flash-image,results/images/cat__google__gemini-2.5-flash-image.png,image/png,6.4,0.038706,
+dog,"A photo of a dog holding a protest sign that reads ""MORE FETCH, LESS CATS""",openai/gpt-image-2,results/images/dog__openai__gpt-image-2.png,image/png,13.65,0.006575,
+dog,"A photo of a dog holding a protest sign that reads ""MORE FETCH, LESS CATS""",google/gemini-3-pro-image,results/images/dog__google__gemini-3-pro-image.png,image/png,17.39,0.137618,
+dog,"A photo of a dog holding a protest sign that reads ""MORE FETCH, LESS CATS""",black-forest-labs/flux.2-pro,results/images/dog__black-forest-labs__flux.2-pro.png,image/png,10.85,0.03,
+dog,"A photo of a dog holding a protest sign that reads ""MORE FETCH, LESS CATS""",google/gemini-2.5-flash-image,results/images/dog__google__gemini-2.5-flash-image.png,image/png,6.96,0.0387057,

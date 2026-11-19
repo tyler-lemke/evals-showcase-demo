@@ -1,0 +1,5 @@
+5: Everything the prompt asks for is there and correct: the animal clearly holding a protest sign, and the sign reads exactly the words in the prompt with no misspelled, missing or extra letters. It looks like a believable photo.
+4: Everything the prompt asks for is there and the sign text is exactly right, but there is a small visual flaw: odd paws, a strange grip, or something that looks slightly off.
+3: The animal and sign are there, but the text has one small error (one wrong, missing or extra letter or word, or the comma missing), or the animal is not really holding the sign.
+2: The sign text is badly wrong or partly unreadable, or a main part of the prompt is missing.
+1: Unusable. Wrong animal, no sign, unreadable text, or not this scene at all.
