@@ -5,6 +5,16 @@
   <sub>Scan to open this repo: <a href="https://github.com/tyler-lemke/evals-showcase-demo">github.com/tyler-lemke/evals-showcase-demo</a></sub>
 </p>
 
+Evals are tests for LLMs and agentic systems. They tell you whether a model, or an agent doing
+chat, coding or computer use, is performing well enough when measured against a rubric.
+
+They come in two flavors:
+
+- **Programmatic**: code checks the output against a known answer. Use it when there's a clear
+  right or wrong, such as a classifier's label.
+- **LLM as a judge**: another LLM scores the output against a rubric. Use it for subjective
+  qualities like tone, style or helpfulness, where there's no single correct answer.
+
 Hands-on LLM evals with [promptfoo](https://promptfoo.dev) and [DeepEval](https://deepeval.com),
 calling models through [OpenRouter](https://openrouter.ai). Each folder is a self-contained eval
 with its own setup steps.
